@@ -1,0 +1,39 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+          <option value="E114" />
+          <option value="E111" />
+          <option value="E117" />
+          <option value="E302" />
+          <option value="E305" />
+          <option value="E731" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="cv2.*" />
+          <option value="shamir.share" />
+          <option value="_random.random.randint" />
+          <option value="tkinter.messagebox" />
+          <option value="unittest.result.TestResult.result" />
+          <option value="int.__getitem__" />
+          <option value="paillierlib.paillier.generate_keypair" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
