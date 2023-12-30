@@ -51,3 +51,11 @@ class StudentRepository:
     def delete_student(self, student_id: int) -> bool:
         query = "DELETE FROM students WHERE id = %s"
         return self.execute_query(query, (student_id,))
+
+    def get_random_student(self):
+        query = "SELECT * FROM students ORDER BY RAND() LIMIT 1"
+        result = self.execute_select_query(query)
+        if result:
+            from main import Student
+            return Student(result[0], result[1], result[2])
+        return None
