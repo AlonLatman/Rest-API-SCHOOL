@@ -35,7 +35,7 @@ class StaffRepository:
         result = self.execute_select_query(query, (staff_id,))
         if result:
             from main import Staff
-            return Staff(result[0], result[1], result[2], result[3])
+            return Staff(result[1], result[2], result[0], result[3])
         return None
 
     def update_staff(self, staff_id: int, updated_staff: Staff) -> bool:

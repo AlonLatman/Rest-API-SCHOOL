@@ -22,10 +22,7 @@ def test_route():
 @app.route('/students', methods=['POST'])
 def create_student():
     data = request.json
-    logging.info(f"Received data for creating student: {data}")
-    print("Received data for creating student:", data)
     response = school_api.create_student_endpoint(data)
-    print("Response:", response)
     return jsonify(response)
 
 @app.route('/students/<int:student_id>', methods=['GET'])
