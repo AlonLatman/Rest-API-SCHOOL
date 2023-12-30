@@ -15,7 +15,6 @@ school_api = SchoolAPI(db_connection)
 
 app = Flask(__name__)
 
-
 @app.route('/test', methods=['GET'])
 def test_route():
     return jsonify({"message": "This is a test response"}), 200

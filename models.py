@@ -1,3 +1,4 @@
+"""Basic class function with inheritance"""
 class Person:
     def __init__(self, name: str, email: str, person_id: int):
         self.name = name
@@ -14,6 +15,7 @@ class Person:
         return self.person_id
 
 
+'''even due it's initialized at person it's important to initialize it for other class as well'''
 class Student(Person):
     def __init__(self, name: str, email: str, student_id: int):
         super().__init__(name, email, student_id)

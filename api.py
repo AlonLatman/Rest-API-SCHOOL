@@ -78,7 +78,7 @@ class SchoolAPI:
         staff = staff_repo.get_staff(staff_id)
 
         if staff:
-            return {"student": staff.__dict__}, 200
+            return {"staff": staff.__dict__}, 200
         else:
             return {"error": "Staff not found"}, 404
 
