@@ -109,6 +109,6 @@ class SchoolAPI:
     def get_random_student():
         student = StudentRepository.get_random_student()
         if student:
-            return student.to_dict()  # Assuming you have a method to convert to dict
+            return student.to_dict()
         else:
             return {"error": "No students available"}
