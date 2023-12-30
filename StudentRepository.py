@@ -52,7 +52,7 @@ class StudentRepository:
         query = "DELETE FROM students WHERE id = %s"
         return self.execute_query(query, (student_id,))
 
-    def get_random_student(self):
+    def get_random_student(self) -> object:
         query = "SELECT * FROM students ORDER BY RAND() LIMIT 1"
         result = self.execute_select_query(query)
         if result:
