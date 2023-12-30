@@ -24,9 +24,9 @@ def create_student():
     data = request.json
     response = school_api.create_student_endpoint(data)
     return jsonify(response)
-@app.route('/students/random', methods=['GET'])
-def read_student():
-    return jsonify(school_api.get_random_student())
+@app.route('/students/<int:student_id>', methods=['GET'])
+def read_student(student_id):
+    return jsonify(school_api.read_student_endpoint(student_id))
 
 @app.route('/students/<int:student_id>', methods=['PUT'])
 def update_student(student_id):
