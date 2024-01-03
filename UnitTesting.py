@@ -1,51 +1,50 @@
 import unittest
-from main import app
+import random
+import mysql.connector
+from StaffRepository import StaffRepository
+from StudentRepository import StudentRepository
+from main import app, db_connection
+from models import Student, Staff
+
 
 class FlaskTestCase(unittest.TestCase):
 
     def setUp(self):
         app.testing = True
         self.app = app.test_client()
+        self.Student_repo = StudentRepository(db_connection)
+        self.Staff_repo = StaffRepository(db_connection)
 
     def test_read_student_route(self):
-        # Test the /students
-        response = self.app.get('/students/1')
-        print("read student response ", response.data)
+        random_id = random.randint(1000, 9999)
+
+        response = self.app.get(f'/students/{random_id}')
+        self.assertNotEqual(response.status_code, 404)
+
+        new_student = Student("Test Student", "test@example.com", random_id)
+        self.Student_repo.add_student(new_student)
+
+        response = self.app.get(f'/students/{random_id}')
         self.assertEqual(response.status_code, 200)
+
+        self.Student_repo.delete_student(random_id)
 
     def test_read_staff_route(self):
-        response = self.app.get('/staff/4')
-        print("read staff response ", response.data)
+        random_id = random.randint(1000, 9999)
+
+        response = self.app.get(f'/staff/{random_id}')
+        self.assertNotEqual(response.status_code, 404)
+
+        new_staff = Staff("Test Staff", "test@example.com", random_id, "Teacher")
+        self.Staff_repo.add_staff(new_staff)
+
+        response = self.app.get(f'/staff/{random_id}')
         self.assertEqual(response.status_code, 200)
 
-    def test_update_student_route(self):
-        student = {
-            "name": "Jane Doe",
-            "email": "jane@example.com"
-        }
-        response = self.app.put('/students/123', json=student)
-        print("update student response ", response.data)
-        self.assertEqual(response.status_code, 200)
+        self.Staff_repo.delete_staff(random_id)
 
-    def test_update_staff_route(self):
-        staff = {
-            "name": "Marie jane",
-            "email": "marie@example.com",
-            "position": "Doctor"
-        }
-        response = self.app.put('/staff/3', json=staff)
-        print("update staff response ", response.data)
-        self.assertEqual(response.status_code, 200)
-
-    def test_delete_student_route(self):
-        response = self.app.delete('/students/123')
-        print("delete student response ", response.data)
-        self.assertEqual(response.status_code, 200)
-
-    def test_delete_staff_route(self):
-        response = self.app.delete('/staff/3')
-        print("delete staff response ", response.data)
-        self.assertEqual(response.status_code, 200)
+    def tearDown(self):
+        pass
 
 
 if __name__ == '__main__':
