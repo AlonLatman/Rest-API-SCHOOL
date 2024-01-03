@@ -19,7 +19,8 @@ class FlaskTestCase(unittest.TestCase):
         random_id = random.randint(1000, 9999)
 
         response = self.app.get(f'/students/{random_id}')
-        self.assertNotEqual(response.status_code, 404)
+        print("data response ", response)
+        self.assertEqual(response.status_code, 404)
 
         new_student = Student("Test Student", "test@example.com", random_id)
         self.Student_repo.add_student(new_student)

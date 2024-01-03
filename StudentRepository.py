@@ -41,7 +41,7 @@ class StudentRepository:
         result = self.execute_select_query(query, (student_id,))
         if result:
             from main import Student
-            return Student(result[0], result[1], result[2])
+            return Student(result[1], result[2], result[0])
         return None
 
     def update_student(self, student_id: int, updated_student: Student) -> bool:
