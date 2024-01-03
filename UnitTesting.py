@@ -34,7 +34,7 @@ class FlaskTestCase(unittest.TestCase):
         random_id = random.randint(1000, 9999)
 
         response = self.app.get(f'/staff/{random_id}')
-        self.assertNotEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 404)
 
         new_staff = Staff("Test Staff", "test@example.com", random_id, "Teacher")
         self.Staff_repo.add_staff(new_staff)

@@ -48,7 +48,11 @@ def create_staff():
 
 @app.route('/staff/<int:staff_id>', methods=['GET'])
 def read_staff(staff_id):
-    return jsonify(school_api.read_staff_endpoint(staff_id))
+    # return jsonify(school_api.read_staff_endpoint(staff_id))
+    staff = school_api.read_staff_endpoint(staff_id)
+    if staff is None:
+        return jsonify({"error": "Staff not found"}), 404
+    return jsonify(staff), 200
 
 @app.route('/staff/<int:staff_id>', methods=['PUT'])
 def update_staff(staff_id):

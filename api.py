@@ -28,7 +28,7 @@ class SchoolAPI:
         student_repo = StudentRepository(self.db_connection)
         student = student_repo.get_student(student_id)
 
-        if student:
+        if student is not None:
             return {"student": student.__dict__}, 200
         else:
             return {"error": "Student not found"}, 404
@@ -77,7 +77,7 @@ class SchoolAPI:
         staff_repo = StaffRepository(self.db_connection)
         staff = staff_repo.get_staff(staff_id)
 
-        if staff:
+        if staff is not None:
             return {"staff": staff.__dict__}, 200
         else:
             return {"error": "Staff not found"}, 404
