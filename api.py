@@ -27,7 +27,6 @@ class SchoolAPI:
     def read_student_endpoint(self, student_id):
         student_repo = StudentRepository(self.db_connection)
         student = student_repo.get_student(student_id)
-
         if student is not None:
             return {"student": student.__dict__}, 200
         else:

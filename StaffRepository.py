@@ -1,9 +1,14 @@
+from typing import Optional
+
 import mysql.connector
 from mysql.connector import Error
+
+from models import Staff
 
 
 class StaffRepository:
     from models import Staff
+
     def __init__(self, db_connection):
         self.db_connection = db_connection
 
@@ -30,10 +35,10 @@ class StaffRepository:
         query = "INSERT INTO staff (name, email, id, position) VALUES (%s, %s, %s, %s)"
         return self.execute_query(query, (staff.name, staff.email, staff.person_id, staff.position))
 
-    def get_staff(self, staff_id: int) -> Staff:
+    def get_staff(self, staff_id: int) -> Optional[Staff]:
         query = "SELECT * FROM staff WHERE id = %s"
         result = self.execute_select_query(query, (staff_id,))
-        if result:
+        if result is not None:
             from main import Staff
             return Staff(result[1], result[2], result[0], result[3])
         return None

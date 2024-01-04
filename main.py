@@ -26,7 +26,6 @@ def create_student():
     return jsonify(response)
 @app.route('/students/<int:student_id>', methods=['GET'])
 def read_student(student_id):
-    # return jsonify(school_api.read_student_endpoint(student_id))
     student = school_api.read_student_endpoint(student_id)
     if student is None:
         return jsonify({"error": "Student not found"}), 404

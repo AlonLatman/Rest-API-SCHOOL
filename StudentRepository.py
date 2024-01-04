@@ -1,5 +1,9 @@
+from typing import Optional
+
 import mysql.connector
 from mysql.connector import Error
+
+from models import Student
 
 
 class StudentRepository:
@@ -36,10 +40,10 @@ class StudentRepository:
         query = "INSERT INTO students (name, email, id) VALUES (%s, %s, %s)"
         return self.execute_query(query, (student.name, student.email, student.person_id))
 
-    def get_student(self, student_id: int) -> Student:
+    def get_student(self, student_id: int) -> Optional[Student]:
         query = "SELECT * FROM students WHERE id = %s"
         result = self.execute_select_query(query, (student_id,))
-        if result:
+        if result is not None:
             from main import Student
             return Student(result[1], result[2], result[0])
         return None

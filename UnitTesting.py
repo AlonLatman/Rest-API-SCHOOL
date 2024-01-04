@@ -18,8 +18,7 @@ class FlaskTestCase(unittest.TestCase):
     def test_read_student_route(self):
         random_id = random.randint(1000, 9999)
 
-        response = self.app.get(f'/students/{random_id}')
-        print("data response ", response)
+        response = self.app.get('/students/{}'.format(random_id))
         self.assertEqual(response.status_code, 404)
 
         new_student = Student("Test Student", "test@example.com", random_id)
@@ -33,7 +32,7 @@ class FlaskTestCase(unittest.TestCase):
     def test_read_staff_route(self):
         random_id = random.randint(1000, 9999)
 
-        response = self.app.get(f'/staff/{random_id}')
+        response = self.app.get('/staff/{}'.format(random_id))
         self.assertEqual(response.status_code, 404)
 
         new_staff = Staff("Test Staff", "test@example.com", random_id, "Teacher")
