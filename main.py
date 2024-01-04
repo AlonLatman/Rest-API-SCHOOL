@@ -24,12 +24,11 @@ def create_student():
     data = request.json
     response = school_api.create_student_endpoint(data)
     return jsonify(response)
+
 @app.route('/students/<int:student_id>', methods=['GET'])
 def read_student(student_id):
-    student = school_api.read_student_endpoint(student_id)
-    if student is None:
-        return jsonify({"error": "Student not found"}), 404
-    return jsonify(student), 200
+    student, status = school_api.read_student_endpoint(student_id)
+    return jsonify(student), status
 
 @app.route('/students/<int:student_id>', methods=['PUT'])
 def update_student(student_id):
@@ -47,11 +46,8 @@ def create_staff():
 
 @app.route('/staff/<int:staff_id>', methods=['GET'])
 def read_staff(staff_id):
-    # return jsonify(school_api.read_staff_endpoint(staff_id))
-    staff = school_api.read_staff_endpoint(staff_id)
-    if staff is None:
-        return jsonify({"error": "Staff not found"}), 404
-    return jsonify(staff), 200
+    staff, status = school_api.read_staff_endpoint(staff_id)
+    return jsonify(staff), status
 
 @app.route('/staff/<int:staff_id>', methods=['PUT'])
 def update_staff(staff_id):
@@ -61,6 +57,7 @@ def update_staff(staff_id):
 @app.route('/staff/<int:staff_id>', methods=['DELETE'])
 def delete_staff(staff_id):
     return jsonify(school_api.delete_staff_endpoint(staff_id))
+
 
 if __name__ == '__main__':
     app.run(debug=True)
