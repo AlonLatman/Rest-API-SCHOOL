@@ -1,6 +1,5 @@
 import unittest
 import random
-import mysql.connector
 from StaffRepository import StaffRepository
 from StudentRepository import StudentRepository
 from main import app, db_connection

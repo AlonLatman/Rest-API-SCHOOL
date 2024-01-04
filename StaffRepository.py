@@ -1,10 +1,5 @@
 from typing import Optional
-
-import mysql.connector
 from mysql.connector import Error
-
-from models import Staff
-
 
 class StaffRepository:
     from models import Staff
