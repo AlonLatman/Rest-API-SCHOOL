@@ -11,11 +11,18 @@ class SchoolAPI:
         name = request_data.get("name")
         email = request_data.get("email")
         student_Id = request_data.get("id")
+        student_age = request_data.get("age")
+        student_GPA = float(request_data.get("GPA"))
+        student_gender = request_data.get("gender")
+        student_duration = request_data.get("duration_of_studying")
+        student_curriculum = request_data.get("curriculum")
 
-        if not all(name, email, student_Id):
+        if not all(name, email, student_Id, student_gender, student_GPA, student_age, student_duration,
+                                          student_curriculum):
             return {"error": "Missing data"}, 400
 
-        new_Student = Student(name, email, student_Id)
+        new_Student = Student(name, email, student_Id, student_gender, student_GPA, student_age, student_duration,
+                                          student_curriculum)
         student_repo = StudentRepository(self.db_connection)
         success = student_repo.add_student(new_Student)
 
@@ -35,8 +42,9 @@ class SchoolAPI:
     def update_student_endpoint(self, student_id, request_data):
         name = request_data.get("name")
         email = request_data.get("email")
+        student_GPA = request_data.get("GPA")
 
-        updated_student = Student(name, email, student_id)
+        updated_student = Student(name, email, student_id, student_GPA)
         student_repo = StudentRepository(self.db_connection)
         success = student_repo.update_student(student_id, updated_student)
 

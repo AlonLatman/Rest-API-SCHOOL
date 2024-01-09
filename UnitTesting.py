@@ -20,7 +20,7 @@ class FlaskTestCase(unittest.TestCase):
         response = self.app.get('/students/{}'.format(random_id))
         self.assertEqual(response.status_code, 404)
 
-        new_student = Student("Test Student", "test@example.com", random_id)
+        new_student = Student("Test Student", "test@example.com", random_id, "Male", 5.3, 36, 4,"CS")
         self.Student_repo.add_student(new_student)
 
         response = self.app.get(f'/students/{random_id}')
