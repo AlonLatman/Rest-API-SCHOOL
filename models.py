@@ -17,11 +17,21 @@ class Person:
 
 '''even due it's initialized at person it's important to initialize it for other class as well'''
 class Student(Person):
-    def __init__(self, name: str, email: str, student_id: int):
+    def __init__(self, name: str, email: str, student_id: int, gender: str, GPA: int, age: int, duration_of_studying: int, curriculum: str):
         super().__init__(name, email, student_id)
+        # TODO add age/gender/GPA/duration_of_studying/curriculum and make sure to adjust api and repository
+        self.age = age
+        self.gender = gender
+        self.GPA = GPA
+        self.curriculum = curriculum
+        self.duration_of_studying = duration_of_studying
 
 
 class Staff(Person):
-    def __init__(self, name: str, email: str, staff_id: int, position: str):
+    def __init__(self, name: str, email: str, staff_id: int, position: str, age: int, gender: str, seniority: int):
         super().__init__(name, email, staff_id)
         self.position = position
+        # TODO add age/gender/seniority and make sure to adjust api and repository
+        self.age = age
+        self.gender = gender
+        self.seniority = seniority

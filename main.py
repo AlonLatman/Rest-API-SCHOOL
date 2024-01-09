@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from api import SchoolAPI
 import mysql.connector
+from models import Student, Staff
+
 
 db_connection = mysql.connector.connect(
     host='localhost',
