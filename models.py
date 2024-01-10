@@ -30,7 +30,6 @@ class Staff(Person):
      def __init__(self, name: str, email: str, staff_id: int, position: str, age: int, gender: str, seniority: int):
         super().__init__(name, email, staff_id)
         self.position = position
-        # TODO add age/gender/seniority and make sure to adjust api and repository
         self.age = age
         self.gender = gender
         self.seniority = seniority
