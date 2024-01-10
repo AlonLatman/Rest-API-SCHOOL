@@ -15,7 +15,7 @@ class Person:
         return self.person_id
 
 
-'''even due it's initialized at person it's important to initialize it for other class as well'''
+'''simple class the inherit some of the parameters from Person '''
 class Student(Person):
     def __init__(self, name: str, email: str, student_id: int, gender: str, GPA: float, age: int, duration_of_studying: int, curriculum: str):
         super().__init__(name, email, student_id)
@@ -25,7 +25,7 @@ class Student(Person):
         self.curriculum = curriculum
         self.duration_of_studying = duration_of_studying
 
-
+'''simple class the inherit some of the parameters from Person '''
 class Staff(Person):
      def __init__(self, name: str, email: str, staff_id: int, position: str, age: int, gender: str, seniority: int):
         super().__init__(name, email, staff_id)

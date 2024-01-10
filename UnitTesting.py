@@ -32,9 +32,12 @@ class FlaskTestCase(unittest.TestCase):
     - Asserts that the response status code is 200 (OK) when the student is successfully retrieved.
 
     Note:
-    - The Student object creation and addition to the repository are part of the test setup and not part of the actual application's student retrieval functionality.
-    - The test assumes the presence of a Student class and a student repository (`Student_repo`) for creating and handling student objects.
-    - The 'app' attribute of 'self' should be an instance of the application or a test client associated with the application.
+    - The Student object creation and addition to the repository are part of the test setup and not part of the actual 
+    application's student retrieval functionality.
+    - The test assumes the presence of a Student class and a student repository (`Student_repo`) for creating and 
+    handling student objects.
+    - The 'app' attribute of 'self' should be an instance of the application or a test client associated with 
+    the application.
     """
     def test_read_student_route(self):
         random_id = random.randint(1000, 9999)
@@ -68,9 +71,12 @@ class FlaskTestCase(unittest.TestCase):
     - Asserts that the response status code is 200 (OK) when the staff member is successfully retrieved.
 
     Note:
-    - The Staff object creation and addition to the repository are part of the test setup and not part of the actual application's staff retrieval functionality.
-    - The test assumes the presence of a Staff class and a staff repository (`Staff_repo`) for creating and handling staff objects.
-    - The 'app' attribute of 'self' should be an instance of the application or a test client associated with the application.
+    - The Staff object creation and addition to the repository are part of the test setup and not part of the actual 
+    application's staff retrieval functionality.
+    - The test assumes the presence of a Staff class and a staff repository (`Staff_repo`) for creating and 
+    handling staff objects.
+    - The 'app' attribute of 'self' should be an instance of the application or a test client associated with 
+    the application.
     """
     def test_read_staff_route(self):
         random_id = random.randint(1000, 9999)
@@ -87,25 +93,32 @@ class FlaskTestCase(unittest.TestCase):
         self.Staff_repo.delete_staff(random_id)
 
     """
-    This test case assesses the ability to add multiple random students to the repository and then calculate some basic statistics.
+    This test case assesses the ability to add multiple random students to the repository and then calculate some 
+    basic statistics.
 
     The test performs the following steps:
     1. Defines a set of curriculums.
     2. Initializes an empty list to keep track of added students.
-    3. Adds 10 random students to the student repository. Each student is generated with random attributes, including a unique student ID, gender, GPA, age, duration of studying, and chosen curriculum.
-    4. Initializes a dictionary to count the number of students in each curriculum and a variable to track the total duration of studying for all students.
+    3. Adds 10 random students to the student repository. Each student is generated with random attributes, 
+    including a unique student ID, gender, GPA, age, duration of studying, and chosen curriculum.
+    4. Initializes a dictionary to count the number of students in each curriculum and a variable to track the 
+    total duration of studying for all students.
     5. Iterates over the added students to update the curriculum counts and calculate the total duration of studying.
     6. Calculates the average duration of studying based on the total duration and the number of students.
     7. Outputs the average duration of study and the counts of students in each curriculum.
     8. Removes all the added students from the repository to clean up.
 
     Assertions:
-    - There are no explicit assertions in this test, but it serves to demonstrate the functionality of adding students, performing calculations, and cleaning up.
+    - There are no explicit assertions in this test, but it serves to demonstrate the functionality of adding students, 
+    performing calculations, and cleaning up.
 
     Note:
-    - The test assumes the presence of a Student class and a student repository (`Student_repo`) for creating and handling student objects.
-    - The test uses random generation for student attributes, which means the output (average duration and curriculum counts) will vary each time the test is run.
-    - The 'print' statements are used for demonstration and could be replaced with assertions in a more rigorous test scenario.
+    - The test assumes the presence of a Student class and a student repository (`Student_repo`) for creating and 
+    handling student objects.
+    - The test uses random generation for student attributes, which means the output 
+    (average duration and curriculum counts) will vary each time the test is run.
+    - The 'print' statements are used for demonstration and could be replaced with assertions in a more rigorous 
+    test scenario.
     """
     def test_add_random_students_and_statistics(self):
         curriculums = ["CS", "Math", "Law"]
@@ -142,25 +155,32 @@ class FlaskTestCase(unittest.TestCase):
             self.Student_repo.delete_student(student.person_id)
 
     """
-    This test case evaluates the addition of multiple random staff members to the repository and then calculates various statistics.
+    This test case evaluates the addition of multiple random staff members to the repository and then calculates 
+    various statistics.
 
     The test performs the following steps:
     1. Defines a set of genders and staff positions.
     2. Initializes an empty list to track the staff members added.
-    3. Adds 10 random staff members to the staff repository. Each staff member is generated with random attributes, including a unique staff ID, position, gender, age, and seniority.
+    3. Adds 10 random staff members to the staff repository. Each staff member is generated with random attributes, 
+    including a unique staff ID, position, gender, age, and seniority.
     4. Calculates the total and average age of all the added staff members.
-    5. Initializes a dictionary to count the number of staff members in each position and another dictionary to track the distribution of their seniority.
+    5. Initializes a dictionary to count the number of staff members in each position and another dictionary to 
+    track the distribution of their seniority.
     6. Updates the counts and distribution based on the attributes of each added staff member.
     7. Outputs the average age, position counts, and seniority distribution.
     8. Removes all the added staff members from the repository to clean up.
 
     Assertions:
-    - Like the student test case, there are no explicit assertions in this test. It is designed to demonstrate the functionality of adding staff, performing calculations, and cleaning up.
+    - Like the student test case, there are no explicit assertions in this test. It is designed to demonstrate the 
+    functionality of adding staff, performing calculations, and cleaning up.
 
     Note:
-    - The test assumes the presence of a Staff class and a staff repository (`Staff_repo`) for creating and handling staff objects.
-    - The test uses random generation for staff attributes, which means the output (average age, position counts, and seniority distribution) will vary each time the test is run.
-    - The 'print' statements are used for demonstration purposes and could be replaced with assertions in a more comprehensive testing scenario.
+    - The test assumes the presence of a Staff class and a staff repository (`Staff_repo`) for creating and handling 
+    staff objects.
+    - The test uses random generation for staff attributes, which means the output (average age, position counts, 
+    and seniority distribution) will vary each time the test is run.
+    - The 'print' statements are used for demonstration purposes and could be replaced with assertions in a more 
+    comprehensive testing scenario.
     """
     def test_add_random_staff_and_statistics(self):
         genders = ["Male", "Female"]
